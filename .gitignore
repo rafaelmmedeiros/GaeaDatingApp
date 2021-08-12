@@ -1,0 +1,15 @@
+bin
+obj
+.vscode
+appsettings.json
+Console.txt
+
+
+
+
+*.db
+GaeaDatingApp.db-shm
+GaeaDatingApp.db-wal
+wwwroot
+publish
+_Docs
