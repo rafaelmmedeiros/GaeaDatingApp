@@ -13,6 +13,7 @@ GaeaDatingApp.db-shm
 GaeaDatingApp.db-wal
 wwwroot
 publish
+SSl/
 
 # User-specific files
 *.rsuser
