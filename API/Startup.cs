@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.Interfaces;
+using API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,11 @@ namespace API
         // It can be called as a DEPENDECY INJECTION CONTAINER
         public void ConfigureServices(IServiceCollection services)
         {
+            // AddSingleton: Created and does not stop until aplication stops. Use resources all time.
+            // AddScoped: Life Time of a Http Request.
+            // AddTransient: Created and destroyed after method is finished.
+
+            services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
