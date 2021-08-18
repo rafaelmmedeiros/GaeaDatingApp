@@ -18,7 +18,8 @@
 
       <!-- THIS DIV IS FOR MOBILE -->
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
+        <!-- loggedIn -->
+        <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Matchs</a>
           </li>
@@ -30,9 +31,29 @@
               >Messages</a
             >
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              (click)="logout()"
+              >Logout</a
+            >
+          </li>
         </ul>
+
+        <div class="dropdown" *ngIf="loggedIn">
+          <a class="dropdown-toggle text-light">Welcome user</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item">Edit Profile</a>
+            <a class="dropdown-item" (click)="(logout)">Logout</a>
+          </div>
+        </div>
+
         <!-- LOGIN FORM -->
         <form
+          *ngIf="!loggedIn"
           #loginForm="ngForm"
           class="d-flex"
           (ngSubmit)="login()"
@@ -47,7 +68,7 @@
           />
           <input
             name="password"
-            [(ngModel)]="model.passaword"
+            [(ngModel)]="model.password"
             class="form-control me-2"
             type="password"
             placeholder="Password"
