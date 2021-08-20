@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Carousel</a>
+      <a class="navbar-brand" href="#">Gaea</a>
 
       <!-- HAMBURGUER BUTTOn -->
       <button
@@ -19,7 +19,7 @@
       <!-- THIS DIV IS FOR MOBILE -->
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- loggedIn -->
-        <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
+        <ul class="navbar-nav mr-auto" *ngIf="accoutService.currentUser$ | async">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Matchs</a>
           </li>
@@ -31,19 +31,9 @@
               >Messages</a
             >
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              (click)="logout()"
-              >Logout</a
-            >
-          </li>
         </ul>
 
-        <div class="dropdown" *ngIf="loggedIn" dropdown>
+        <div class="dropdown" *ngIf="accoutService.currentUser$ | async" dropdown>
           <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
             <a class="dropdown-item">Edit Profile</a>
@@ -54,7 +44,7 @@
 
         <!-- LOGIN FORM -->
         <form
-          *ngIf="!loggedIn"
+          *ngIf="(accoutService.currentUser$ | async) === null"
           #loginForm="ngForm"
           class="d-flex"
           (ngSubmit)="login()"
