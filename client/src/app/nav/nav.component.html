@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Gaea</a>
+      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Gaea</a>
 
       <!-- HAMBURGUER BUTTOn -->
       <button
@@ -19,21 +19,32 @@
       <!-- THIS DIV IS FOR MOBILE -->
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- loggedIn -->
-        <ul class="navbar-nav mr-auto" *ngIf="accoutService.currentUser$ | async">
+        <ul
+          class="navbar-nav mr-auto"
+          *ngIf="accoutService.currentUser$ | async"
+        >
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Matchs</a>
+            <a class="nav-link" routerLink="/members" routerLinkActive="active"
+              >Matchs</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Lists</a>
+            <a class="nav-link" routerLink="/lists" routerLinkActive="active"
+              >Lists</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
+            <a class="nav-link" routerLink="/messages" routerLinkActive="active"
               >Messages</a
             >
           </li>
         </ul>
 
-        <div class="dropdown" *ngIf="accoutService.currentUser$ | async" dropdown>
+        <div
+          class="dropdown"
+          *ngIf="accoutService.currentUser$ | async"
+          dropdown
+        >
           <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
             <a class="dropdown-item">Edit Profile</a>
