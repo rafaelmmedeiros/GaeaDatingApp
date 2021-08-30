@@ -1,19 +1,21 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Gaea</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="container">
 
-      <!-- HAMBURGUER BUTTOn -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Gaea Dating</a>
+
+      <!-- HAMBURGUER BUTTON -->
+      <button (click)="toggleMenu()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <!-- THIS DIV IS FOR MOBILE -->
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-collapse collapse" id="navbarColor01">
 
         <!-- loggedIn -->
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav me-auto">
           <ng-container *ngIf="accoutService.currentUser$ | async">
             <li class="nav-item">
               <a class="nav-link" routerLink="/members" routerLinkActive="active">Matchs</a>
@@ -27,8 +29,8 @@
           </ng-container>
         </ul>
 
-        <div class="dropdown" *ngIf="accoutService.currentUser$ | async" dropdown>
-          <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
+        <div class="dropdown" *ngIf="(accoutService.currentUser$ | async) as user" dropdown>
+          <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.username | titlecase}} </a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
             <a class="dropdown-item">Edit Profile</a>
             <div class="dropdown-divider"></div>
@@ -43,10 +45,12 @@
             placeholder="Username" />
           <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
             placeholder="Password" />
-          <button class="btn btn-outline-success" type="submit">Login</button>
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
         </form>
 
       </div>
+
+
     </div>
   </div>
 </nav>

@@ -10,6 +10,7 @@ import { AccountService } from '../_services/account.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  menuVisibilite: boolean = false;
 
   constructor(
     public accoutService: AccountService,
@@ -35,5 +36,9 @@ export class NavComponent implements OnInit {
   logout() {
     this.router.navigateByUrl('/');
     this.accoutService.logout();
+  }
+
+  toggleMenu() {
+    this.menuVisibilite = !this.menuVisibilite;
   }
 }
